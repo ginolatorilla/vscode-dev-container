@@ -1,5 +1,6 @@
 # See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.238.0/containers/ubuntu/.devcontainer/base.Dockerfile
-FROM ubuntu:latest
+ARG BASE_IMAGE=ubuntu
+FROM $BASE_IMAGE
 
 ARG USERNAME=vscode
 ARG USER_UID=1000
