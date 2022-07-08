@@ -1,7 +1,7 @@
-# See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.238.0/containers/ubuntu/.devcontainer/base.Dockerfile.
 ARG BASE_IMAGE=ubuntu
 FROM $BASE_IMAGE
 
+# These arguments have to be defined here because docker-build will discard every ARG before FROM.
 ARG USERNAME=vscode
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
@@ -59,4 +59,6 @@ RUN apt-get update \
         fish \
         man-db \
         ssh \
-        rsync
+        rsync \
+    && apt-get autoremove -y \
+    && apt-get autoclean -y
