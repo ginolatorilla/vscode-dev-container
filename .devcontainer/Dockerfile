@@ -62,5 +62,7 @@ RUN apt-get update \
         man-db \
         ssh \
         rsync \
+        less \
+        htop \
     && apt-get autoremove -y \
     && apt-get autoclean -y
