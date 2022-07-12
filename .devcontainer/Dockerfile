@@ -56,11 +56,13 @@ RUN curl -fsSL "https://download.docker.com/linux/$(lsb_release -i | tr '[:upper
         docker-compose-plugin \
         git \
         python3 \
+        python3-pip \
         man-db \
         ssh \
         rsync \
         less \
         htop \
+        iproute2 \
     && apt-get autoremove -y \
     && apt-get autoclean -y
 
