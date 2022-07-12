@@ -9,6 +9,28 @@
 			"USERNAME": "${localEnv:USER}"
 		}
 	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-azuretools.vscode-docker",
+				"foxundermoon.shell-format",
+				"redhat.vscode-yaml",
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+				"ms-toolsai.jupyter",
+				"almenon.arepl",
+				"ms-kubernetes-tools.vscode-kubernetes-tools",
+				"GitLab.gitlab-workflow",
+				"redhat.ansible",
+				"redhat.vscode-openshift-connector",
+				"yzhang.markdown-all-in-one",
+				"DavidAnson.vscode-markdownlint",
+				"timonwong.shellcheck",
+				"wholroyd.jinja",
+				"eamodio.gitlens"
+			]
+		}
+	},
 	"remoteUser": "${localEnv:USER}",
 	"mounts": [
 		"source=${localEnv:HOME},target=/home/${localEnv:USER},type=bind,consistency=cached", // Persist home directory state, like configurations and shell history.
