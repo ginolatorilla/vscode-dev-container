@@ -5,6 +5,7 @@ FROM $BASE_IMAGE
 ARG USERNAME=vscode
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
+ARG OPENSHIFT_CONSOLE_DOMAIN=''
 
 # Shut up apt-get warnings!
 ENV DEBIAN_FRONTEND=noninteractive
@@ -71,3 +72,14 @@ RUN curl -fsSL "https://download.docker.com/linux/$(lsb_release -i | tr '[:upper
 
 ENTRYPOINT [ "/usr/local/share/docker-init.sh" ]
 CMD [ "sleep", "infinity" ]
+
+# Install optional third-party packages
+RUN if [ -n "${OPENSHIFT_CONSOLE_DOMAIN}" ]; then \
+    mkdir -p /opt/openshift/bin \
+    && cd /opt/openshift/bin \
+    && curl -o oc.tar -fSSL https://$(echo $OPENSHIFT_CONSOLE_DOMAIN | sed 's/^console/downloads/g')/$(dpkg --print-architecture)/linux/oc.tar \
+    && tar xvf oc.tar \
+    && chmod +x oc \
+    ; fi
+
+ENV PATH "$PATH:/opt/openshift/bin"

@@ -6,7 +6,8 @@
 		"dockerfile": "Dockerfile",
 		"args": {
 			"BASE_IMAGE": "ubuntu", // WARNING: This project supports Debian and Ubuntu variants only.
-			"USERNAME": "${localEnv:USER}"
+			"USERNAME": "${localEnv:USER}",
+			"OPENSHIFT_CONSOLE_DOMAIN": "${localEnv:OPENSHIFT_CONSOLE_DOMAIN}"
 		}
 	},
 	"remoteUser": "${localEnv:USER}",
