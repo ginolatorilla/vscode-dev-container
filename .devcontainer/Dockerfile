@@ -82,4 +82,11 @@ RUN if [ -n "${OPENSHIFT_CONSOLE_DOMAIN}" ]; then \
     && chmod +x oc \
     ; fi
 
-ENV PATH "$PATH:/opt/openshift/bin"
+RUN mkdir -p /opt/sealed-secrets/bin \
+    && cd /opt/sealed-secrets \
+    && curl -o kubeseal-0.18.0-linux-$(dpkg --print-architecture).tar.gz -fSSL https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.18.0/kubeseal-0.18.0-linux-$(dpkg --print-architecture).tar.gz \
+    && tar xzvf kubeseal-0.18.0-linux-$(dpkg --print-architecture).tar.gz \
+    && chmod +x kubeseal \
+    && ln -s /opt/sealed-secrets/kubeseal /opt/sealed-secrets/bin/kubeseal
+
+ENV PATH "$PATH:/opt/openshift/bin:/opt/sealed-secrets/bin"
