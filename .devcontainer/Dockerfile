@@ -24,7 +24,8 @@ RUN apt-get update \
         gnupg2 \
         lsb-release \
         socat \
-        man-db
+        man-db \
+        locales
 
 # Add yourself as a non-root user that can still run as root.
 RUN groupadd --gid $USER_GID $USERNAME \
@@ -45,7 +46,10 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && chmod +x /usr/local/share/docker-init.sh \
     && chmod +x /usr/local/share/init.sh \
     # Expand all manual pages.
-    && yes | unminimize
+    && yes | unminimize \
+    # Set the system locale to suppress future warnings from programs like 'man'.
+    && locale-gen en_US.UTF-8 \
+    && update-locale LANG=en_US.UTF-8
 
 # Get third-party packages
 RUN curl -fsSL "https://download.docker.com/linux/$(lsb_release -i | tr '[:upper:]' '[:lower:]' | cut -d ':' -f 2 | tr -d '[:space:]')/gpg" | apt-key add - 2>/dev/null \
