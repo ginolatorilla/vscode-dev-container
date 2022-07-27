@@ -69,6 +69,7 @@ RUN curl -fsSL "https://download.docker.com/linux/$(lsb_release -i | tr '[:upper
         iproute2 \
         parallel \
         file \
+        jq \
     && apt-get autoremove -y \
     && apt-get autoclean -y
 
