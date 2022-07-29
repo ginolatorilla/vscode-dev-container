@@ -10,15 +10,18 @@
 		}
 	},
 	"remoteUser": "${localEnv:USER}",
-	"mounts": [
-		"source=${localEnv:HOME},target=/home/${localEnv:USER},type=bind,consistency=cached", // Persist home directory state, like configurations and shell history.
-		"source=${localEnv:HOME},target=${localEnv:HOME},type=bind,consistency=cached", // For compatibility with minikube on-host (Mac).
+	"mounts": [ // These are for a MacOS host
+		"source=home,target=/home/${localEnv:USER},type=volume", // Persist home directory state, like configurations and shell history.
+		"source=${localEnv:HOME}/.ssh,target=/home/${localEnv:USER}/.ssh,type=bind,consistency=cached", // Sync SSH config
+		"source=${localEnv:HOME}/.docker,target=/home/${localEnv:USER}/.docker,type=bind,consistency=cached", // Sync dotdocker
+		"source=${localEnv:HOME}/Documents,target=/home/${localEnv:USER}/Documents,type=bind,consistency=cached", // Sync Documents
+		"source=${localEnv:HOME}/Downloads,target=/home/${localEnv:USER}/Downloads,type=bind,consistency=cached", // Sync Downloads
 		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind", // Connect to the docker daemon in the host.
 		"source=${localEnv:SSH_AUTH_SOCK},target=/var/run/ssh-agent.sock,type=bind" // Connect to the ssh agent in the host.
 	],
 	"runArgs": [
 		"--init",
-		"--hostname=ubuntu-in-mac" // Change this to your liking.
+		"--hostname=ubuntu" // Change this to your liking.
 	],
 	"overrideCommand": false, // Let the ENTRYPOINT run, don't allow VSCode to interfere.
 	"shutdownAction": "none"
