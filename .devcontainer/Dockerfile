@@ -56,20 +56,21 @@ RUN curl -fsSL "https://download.docker.com/linux/$(lsb_release -i | tr '[:upper
     && echo "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/$(lsb_release -i | tr '[:upper:]' '[:lower:]' | cut -d ':' -f 2 | tr -d '[:space:]') $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
-        docker-ce-cli \
-        docker-compose-plugin \
-        git \
-        python3 \
-        python3-pip \
-        man-db \
-        ssh \
-        rsync \
-        less \
-        htop \
-        iproute2 \
-        parallel \
-        file \
-        jq \
+    docker-ce-cli \
+    docker-compose-plugin \
+    git \
+    python3 \
+    python3-pip \
+    man-db \
+    ssh \
+    rsync \
+    less \
+    htop \
+    iproute2 \
+    parallel \
+    file \
+    jq \
+    tree \
     && apt-get autoremove -y \
     && apt-get autoclean -y
 
