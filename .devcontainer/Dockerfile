@@ -12,6 +12,11 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Forward the host's ssh-agent. See mounts in devcontainer.json.
 ENV SSH_AGENT_SOCK=/var/run/ssh-agent.sock
 
+# http://bugs.python.org/issue19846
+# > At the moment, setting "LANG=C" on a Linux system *fundamentally breaks Python 3*, and that's not OK.
+# See: https://github.com/docker-library/python/blob/master/Dockerfile-linux.template
+ENV LANG=en_US.UTF-8
+
 COPY init.sh /usr/local/share/
 
 # Install essentials
