@@ -58,8 +58,8 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && update-locale LANG=en_US.UTF-8
 
 # Get third-party packages
-RUN /tmp/install-packages.sh \
-    && chmod +x /tmp/install-packages.sh \
+RUN chmod +x /tmp/install-packages.sh \
+    && /tmp/install-packages.sh \
     && rm /tmp/install-packages.sh
 
 ENTRYPOINT [ "/usr/local/share/docker-init.sh" ]
