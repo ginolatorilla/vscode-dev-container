@@ -15,3 +15,4 @@ plugin in VSCode. This is oriented for a DevOps role.
 - Run `docker` inside. The container's Docker CLI will connect to the host's Docker daemon.
 - Preserve your shell history and configuration files across containers. Your host's home directory will be mounted.
 - Hook script if you need custom initialisation of the container.
+- Third-party packages are listed in `.devcontainer/install-packages.sh` so that you can use this script in a Linux host (e.g. WSL2).

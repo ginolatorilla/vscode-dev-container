@@ -18,6 +18,7 @@ ENV SSH_AGENT_SOCK=/var/run/ssh-agent.sock
 ENV LANG=en_US.UTF-8
 
 COPY init.sh /usr/local/share/
+COPY install-packages.sh /tmp/
 
 # Install essentials
 RUN apt-get update \
@@ -57,27 +58,9 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && update-locale LANG=en_US.UTF-8
 
 # Get third-party packages
-RUN curl -fsSL "https://download.docker.com/linux/$(lsb_release -i | tr '[:upper:]' '[:lower:]' | cut -d ':' -f 2 | tr -d '[:space:]')/gpg" | apt-key add - 2>/dev/null \
-    && echo "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/$(lsb_release -i | tr '[:upper:]' '[:lower:]' | cut -d ':' -f 2 | tr -d '[:space:]') $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list \
-    && apt-get update \
-    && apt-get install -y --no-install-recommends \
-    docker-ce-cli \
-    docker-compose-plugin \
-    git \
-    python3 \
-    python3-pip \
-    man-db \
-    ssh \
-    rsync \
-    less \
-    htop \
-    iproute2 \
-    parallel \
-    file \
-    jq \
-    tree \
-    && apt-get autoremove -y \
-    && apt-get autoclean -y
+RUN /tmp/install-packages.sh \
+    && chmod +x /tmp/install-packages.sh \
+    && rm /tmp/install-packages.sh
 
 ENTRYPOINT [ "/usr/local/share/docker-init.sh" ]
 CMD [ "sleep", "infinity" ]
