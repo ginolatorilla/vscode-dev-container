@@ -1,6 +1,7 @@
 # My VSCode Development Container
 
-Here I define my development container that I use with the [Remote - Containers](https://aka.ms/vscode-remote/) plugin in VSCode.
+Here I define my development container that I use with the [Remote - Containers](https://aka.ms/vscode-remote/)
+plugin in VSCode. This is oriented for a DevOps role.
 
 ## Usage
 
