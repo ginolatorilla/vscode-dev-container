@@ -21,7 +21,7 @@
 	],
 	"runArgs": [
 		"--init",
-		"--hostname=ubuntu" // Change this to your liking.
+		"--hostname=vscode-dev-container"
 	],
 	"overrideCommand": false, // Let the ENTRYPOINT run, don't allow VSCode to interfere.
 	"shutdownAction": "none"
