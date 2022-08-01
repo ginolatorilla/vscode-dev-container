@@ -10,6 +10,7 @@ plugin in VSCode. This is oriented for a DevOps role.
 - Preserve your home directory (shell history and configuration files) across container rebuilds.
 - Hook script if you need custom initialisation of the container.
 - Third-party packages are listed in `.devcontainer/install-packages.sh` so that you can use this script in a Linux host (e.g. WSL2).
+- Integrates with [ginolatorilla/dotfiles](https://github.com/ginolatorilla/dotfiles).
 
 ## Installation
 

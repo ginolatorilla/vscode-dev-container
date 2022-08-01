@@ -24,5 +24,12 @@
 		"--hostname=vscode-dev-container"
 	],
 	"overrideCommand": false, // Let the ENTRYPOINT run, don't allow VSCode to interfere.
-	"shutdownAction": "none"
+	"shutdownAction": "none",
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"dotfiles.repository": "ginolatorilla/dotfiles"
+			}
+		}
+	}
 }
