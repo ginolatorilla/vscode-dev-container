@@ -42,7 +42,11 @@
 				"ms-python.python",
 				"foxundermoon.shell-format",
 				"redhat.vscode-yaml",
-				"yzhang.markdown-all-in-one"
+				"yzhang.markdown-all-in-one",
+				"VisualStudioExptTeam.vscodeintellicode",
+				"VisualStudioExptTeam.intellicode-api-usage-examples",
+				"GrapeCity.gc-excelviewer",
+				"codezombiech.gitignore"
 			]
 		}
 	}
