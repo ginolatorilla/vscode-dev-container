@@ -10,8 +10,8 @@
 		}
 	},
 	"remoteUser": "${localEnv:USER}",
-	"mounts": [ // These are for a MacOS host
-		"source=home,target=/home/${localEnv:USER},type=volume", // Persist home directory state, like configurations and shell history.
+	"mounts": [
+		"source=vscode-dev-container-home,target=/home/${localEnv:USER},type=volume", // Persist home directory state, like configurations and shell history.
 		"source=${localEnv:HOME}/.ssh,target=/home/${localEnv:USER}/.ssh,type=bind,consistency=cached", // Sync SSH config
 		"source=${localEnv:HOME}/.docker,target=/home/${localEnv:USER}/.docker,type=bind,consistency=cached", // Sync dotdocker
 		"source=${localEnv:HOME}/Documents,target=/home/${localEnv:USER}/Documents,type=bind,consistency=cached", // Sync Documents
