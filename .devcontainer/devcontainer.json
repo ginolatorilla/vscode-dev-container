@@ -29,7 +29,21 @@
 		"vscode": {
 			"settings": {
 				"dotfiles.repository": "ginolatorilla/dotfiles"
-			}
+			},
+			"extensions": [
+				"almenon.arepl",
+				"ms-azuretools.vscode-docker",
+				"bmalehorn.vscode-fish",
+				"bierner.github-markdown-preview",
+				"eamodio.gitlens",
+				"ms-toolsai.jupyter",
+				"DavidAnson.vscode-markdownlint",
+				"ms-python.vscode-pylance",
+				"ms-python.python",
+				"foxundermoon.shell-format",
+				"redhat.vscode-yaml",
+				"yzhang.markdown-all-in-one"
+			]
 		}
 	}
 }
