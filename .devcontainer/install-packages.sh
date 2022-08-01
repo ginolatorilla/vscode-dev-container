@@ -23,6 +23,7 @@ apt-get install -y --no-install-recommends \
     parallel \
     file \
     jq \
-    tree
+    tree \
+    vim
 apt-get autoremove -y
 apt-get autoclean -y
