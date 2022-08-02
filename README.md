@@ -41,3 +41,20 @@ plugin in VSCode. This is oriented for a DevOps role.
    [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
 3. Clone this repo and reopen it in VSCode.
 4. Open the **Command Palette** _(Ctrl+Shift+P)_ and select **Rebuild Container**.
+
+## Usage Patterns
+
+### Access the host's SSH agent
+
+Use this Bash script to reconnect to the SSH agent socket that's created by VSCode:
+
+```bash
+export SSH_AUTH_SOCK=$(find /tmp -name 'vscode-ssh-auth-*')
+```
+
+You may also use this script to attach to the container from outside VSCode:
+
+```bash
+DEVCONTAINER=$(docker container ls | grep vscode-dev-container | awk '{print $1}')
+docker exec -it -e SSH_AUTH_SOCK=$(docker exec $DEVCONTAINER find /tmp -name 'vscode-ssh-auth-*') -u $USER -w /home/$USER $DEVCONTAINER bash
+```

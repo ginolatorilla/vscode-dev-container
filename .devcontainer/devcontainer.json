@@ -16,8 +16,7 @@
 		"source=${localEnv:HOME}/.docker,target=/home/${localEnv:USER}/.docker,type=bind,consistency=cached", // Sync dotdocker
 		"source=${localEnv:HOME}/Documents,target=/home/${localEnv:USER}/Documents,type=bind,consistency=cached", // Sync Documents
 		"source=${localEnv:HOME}/Downloads,target=/home/${localEnv:USER}/Downloads,type=bind,consistency=cached", // Sync Downloads
-		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind", // Connect to the docker daemon in the host.
-		"source=${localEnv:SSH_AUTH_SOCK},target=/var/run/ssh-agent.sock,type=bind" // Connect to the ssh agent in the host.
+		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind" // Connect to the docker daemon in the host.
 	],
 	"runArgs": [
 		"--init",
