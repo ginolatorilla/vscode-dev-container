@@ -15,7 +15,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV LANG=en_US.UTF-8
 
 COPY init.sh /usr/local/share/
-COPY install-packages.sh /tmp/
 
 # Install essentials
 RUN apt-get update \
@@ -55,6 +54,7 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && update-locale LANG=en_US.UTF-8
 
 # Get third-party packages
+COPY install-packages.sh /tmp/
 RUN chmod +x /tmp/install-packages.sh \
     && /tmp/install-packages.sh \
     && rm /tmp/install-packages.sh
