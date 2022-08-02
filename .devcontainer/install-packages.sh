@@ -27,3 +27,7 @@ apt-get install -y --no-install-recommends \
     vim
 apt-get autoremove -y
 apt-get autoclean -y
+
+mkdir -p /opt
+curl -fSL "https://go.dev/dl/go1.18.5.linux-${__arch__}.tar.gz" | tar xvz -C /opt
+find /opt/go/bin -maxdepth 1 -type f -executable -exec sh -c 'ln -s $1 /usr/bin/$(basename $1)' shell '{}' ';'

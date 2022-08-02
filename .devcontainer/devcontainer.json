@@ -45,7 +45,9 @@
 				"VisualStudioExptTeam.vscodeintellicode",
 				"VisualStudioExptTeam.intellicode-api-usage-examples",
 				"GrapeCity.gc-excelviewer",
-				"codezombiech.gitignore"
+				"codezombiech.gitignore",
+				"timonwong.shellcheck",
+				"golang.Go"
 			]
 		}
 	}
