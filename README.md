@@ -56,5 +56,6 @@ You may also use this script to attach to the container from outside VSCode:
 
 ```bash
 DEVCONTAINER=$(docker container ls | grep vscode-dev-container | awk '{print $1}')
-docker exec -it -e SSH_AUTH_SOCK=$(docker exec $DEVCONTAINER find /tmp -name 'vscode-ssh-auth-*') -u $USER -w /home/$USER $DEVCONTAINER bash
+SSH_AUTH_IN_CONTAINER=$(docker exec $DEVCONTAINER sh -c 'ls -t /tmp/vscode-ssh-auth* 2>/dev/null' | head -1)
+docker exec -it -e SSH_AUTH_SOCK=$SSH_AUTH_IN_CONTAINER -u $USER -w /home/$USER $DEVCONTAINER bash
 ```
